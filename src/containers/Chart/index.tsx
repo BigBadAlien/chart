@@ -8,6 +8,8 @@ import { omit } from '../../utils/omit';
 import { ChartViewItem } from '../../components/ChartView/meta';
 import { Radio } from 'antd';
 import { Period } from '../../models/Period';
+import Select from 'antd/lib/select';
+import { ChartItem } from '../../models/ChartItem';
 
 
 export interface Props {
@@ -53,6 +55,15 @@ export class Chart extends React.Component<Props> {
             </Radio.Group>
             <div>
                 <ChartView data={this.props.data!}/>
+            </div>
+            <div>
+                <Select defaultValue='high' style={{ width: 180 }} onChange={(value) => {
+                    this.props.actions!.setChartType(value as keyof ChartItem);
+                }}>
+                    <Select.Option value='high'>Price</Select.Option>
+                    <Select.Option value='unadjustedVolume'>Unadjusted Volume</Select.Option>
+                    <Select.Option value='change'>Change</Select.Option>
+                </Select>
             </div>
         </div>;
     }
