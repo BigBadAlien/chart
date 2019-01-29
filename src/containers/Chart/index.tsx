@@ -19,10 +19,13 @@ export interface Props {
     currency?: string;
     ISIN?: string;
     description?: string;
+    currentPrice?: number | undefined;
 }
 
 @connect(
     (state: RootState): Omit<Props, 'actions'> => {
+        const lastChartItem = state.chart.data.chart[state.chart.data.chart.length - 1];
+
         return {
             data: state.chart.data.chart.map((item) => {
                 return {
@@ -34,6 +37,7 @@ export interface Props {
             currency: state.chart.data.currency,
             ISIN: state.chart.data.ISIN,
             description: state.chart.data.description,
+            currentPrice: (lastChartItem && lastChartItem.high),
         };
     },
     (dispatch: Dispatch): Pick<Props, 'actions'> => ({
@@ -52,7 +56,9 @@ export class Chart extends React.Component<Props> {
         return <div className='content'>
             <div className='header'>
                 <div className='memo'>
-                    <h1>{this.props.title} <span className='currency'>{this.props.currency}</span></h1>
+                    <h1>{this.props.title}
+                        {this.props.currentPrice ? <>{' '}{this.props.currentPrice}{' '}<span className='currency'>{this.props.currency}</span></> : null}
+                    </h1>
                     <div>
                         {this.props.ISIN}
                     </div>
