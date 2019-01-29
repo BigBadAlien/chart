@@ -50,7 +50,12 @@ const ApiGetSymbol = (payload: ApiGetSymbolRequest, mock = true): Promise<ApiGet
 
     return fetch(url, {
         method: 'GET',
-    }).then((response) => {
+    })
+        .then((response) => {
+            fetchMock.reset();
+            return response;
+        })
+        .then((response) => {
         return response.json()
             .then((responseData) => {
                 if (response.status === 200) {

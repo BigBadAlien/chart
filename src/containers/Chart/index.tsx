@@ -6,6 +6,8 @@ import { ChartView } from '../../components/ChartView';
 import * as ChartActions from '../../actions/chart';
 import { omit } from '../../utils/omit';
 import { ChartViewItem } from '../../components/ChartView/meta';
+import { Radio } from 'antd';
+import { Period } from '../../models/Period';
 
 
 export interface Props {
@@ -14,7 +16,7 @@ export interface Props {
 }
 
 @connect(
-    (state: RootState): Pick<Props, 'data'> => { // Pick<Props>
+    (state: RootState): Pick<Props, 'data'> => {
         return {
             data: state.chart.data.chart.map((item) => {
                 return {
@@ -29,11 +31,29 @@ export interface Props {
     })
 )
 export class Chart extends React.Component<Props> {
+    private defaultPeriod: Period = 'month';
+    private symbol: string = 'USDJH34G5JHGJH34';
+
     componentDidMount() {
-        this.props.actions!.fetchSymbol({id: 'USDJH34G5JHGJH34', period: 'month'})
+        this.props.actions!.fetchSymbol({id: this.symbol, period: this.defaultPeriod})
     }
 
     render() {
-        return <ChartView data={this.props.data!}/>;
+        return <div>
+            <Radio.Group defaultValue={this.defaultPeriod} buttonStyle='solid' onChange={(event) => {
+                this.props.actions!.fetchSymbol({
+                    id: this.symbol,
+                    period: event.target.value,
+                })
+            }}>
+                <Radio.Button value='month'>Month</Radio.Button>
+                <Radio.Button value='3months'>Quarter</Radio.Button>
+                <Radio.Button value='year'>Year</Radio.Button>
+                <Radio.Button value='max'>Max</Radio.Button>
+            </Radio.Group>
+            <div>
+                <ChartView data={this.props.data!}/>
+            </div>
+        </div>;
     }
 }

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/antd": "^1.0.0",
     "@types/fetch-mock": "^7.2.2",
     "@types/jest": "^23.3.13",
     "@types/node": "10.12.18",
@@ -12,6 +13,7 @@
     "@types/recharts": "^1.1.10",
     "@types/redux-actions": "^2.3.1",
     "@types/redux-mock-store": "^1.0.0",
+    "antd": "^3.13.0",
     "fetch-mock": "^7.3.0",
     "node-fetch": "^2.3.0",
     "react": "^16.7.0",

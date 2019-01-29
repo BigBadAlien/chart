@@ -3,6 +3,7 @@ import './App.css';
 import { configureStore } from './store';
 import { Provider } from 'react-redux';
 import { Chart } from './containers/Chart';
+import 'antd/dist/antd.css';
 
 const store = configureStore();
 
