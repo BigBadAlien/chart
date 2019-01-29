@@ -15,17 +15,25 @@ import './index.css';
 export interface Props {
     actions?: Omit<typeof ChartActions, 'Type'>;
     data?: ChartViewItem[];
+    title?: string;
+    currency?: string;
+    ISIN?: string;
+    description?: string;
 }
 
 @connect(
-    (state: RootState): Pick<Props, 'data'> => {
+    (state: RootState): Omit<Props, 'actions'> => {
         return {
             data: state.chart.data.chart.map((item) => {
                 return {
                     date: item.date,
                     value: item[state.chart.type] as number,
                 }
-            })
+            }),
+            title: state.chart.data.title,
+            currency: state.chart.data.currency,
+            ISIN: state.chart.data.ISIN,
+            description: state.chart.data.description,
         };
     },
     (dispatch: Dispatch): Pick<Props, 'actions'> => ({
@@ -43,6 +51,15 @@ export class Chart extends React.Component<Props> {
     render() {
         return <div className='content'>
             <div className='header'>
+                <div className='memo'>
+                    <h1>{this.props.title} <span className='currency'>{this.props.currency}</span></h1>
+                    <div>
+                        {this.props.ISIN}
+                    </div>
+                    <div>
+                        {this.props.description}
+                    </div>
+                </div>
                 <Radio.Group defaultValue={this.defaultPeriod} buttonStyle='solid' onChange={(event) => {
                     this.props.actions!.fetchSymbol({
                         id: this.symbol,

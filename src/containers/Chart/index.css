@@ -1,6 +1,7 @@
 
 .content {
     width: 700px;
+    margin-top: 50px;
 }
 
 .header {
@@ -11,4 +12,15 @@
     display: flex;
     justify-content: flex-end;
     padding-right: 136px;
+}
+
+.currency {
+    font-size: 15px;
+    font-weight: lighter;
+}
+
+.memo {
+    border-bottom: 1px solid gray;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
 }
