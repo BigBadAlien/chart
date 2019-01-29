@@ -11,10 +11,12 @@ import mock3Months from '../mocks/chart-3months.json';
 import mock1Year from '../mocks/chart-1year.json';
 import mockMax from '../mocks/chart-max.json';
 import fetchMock from 'fetch-mock';
+import { ChartItem } from '../models/ChartItem';
 
 export enum Type {
     SET_SYMBOL_DATA = 'SET_SYMBOL_DATA',
     SET_SYMBOL_ERROR = 'SET_SYMBOL_ERROR',
+    SET_CHART_TYPE = 'SET_CHART_TYPE',
 }
 
 export const fetchSymbol = function (
@@ -62,3 +64,4 @@ const ApiGetSymbol = (payload: ApiGetSymbolRequest, mock = true): Promise<ApiGet
 
 export const setSymbolData = createAction<ApiGetSymbolResponse>(Type.SET_SYMBOL_DATA);
 export const setSymbolError = createAction<Error | ApiError>(Type.SET_SYMBOL_ERROR);
+export const setChartType = createAction<keyof ChartItem>(Type.SET_CHART_TYPE);
