@@ -8,7 +8,7 @@ describe('ChartView reducer', () => {
         const state = chartReducer(Object.assign(
             {}, initialState), setSymbolData(mock1Month as ApiGetSymbolResponse));
         expect(state).toMatchObject({
-            chart: mock1Month,
+            data: mock1Month,
         });
     });
 

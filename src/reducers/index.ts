@@ -2,9 +2,10 @@ import { combineReducers } from 'redux';
 import { chartReducer } from './chart';
 import { ChartItem } from '../models/ChartItem';
 import { ApiError } from '../models/ApiError';
+import { ApiGetSymbolResponse } from '../models/ApiGetSymbolResponse';
 
 export interface ChartState {
-    chart: ChartItem[];
+    data: ApiGetSymbolResponse;
     error: ApiError | Error | null;
     type: keyof ChartItem,
 }

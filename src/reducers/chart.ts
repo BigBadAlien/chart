@@ -6,7 +6,13 @@ import { ApiError } from '../models/ApiError';
 import { ChartItem } from '../models/ChartItem';
 
 export const initialState: ChartState = {
-    chart: [],
+    data: {
+        title: '',
+        currency: '',
+        ISIN: '',
+        description: '',
+        chart: [],
+    },
     error: null,
     type: 'high',
 };
@@ -16,7 +22,7 @@ export const chartReducer = handleActions<ChartState, any>(
     {
         [Type.SET_SYMBOL_DATA]: (state, action: Action<ApiGetSymbolResponse>) => {
             return Object.assign({}, state, {
-                chart: action.payload,
+                data: action.payload,
             });
         },
         [Type.SET_SYMBOL_ERROR]: (state, action: Action<ApiError | Error>) => {
