@@ -1,0 +1,14 @@
+
+.content {
+    width: 700px;
+}
+
+.header {
+    margin-left: 50px;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 136px;
+}

@@ -10,7 +10,7 @@ import { Radio } from 'antd';
 import { Period } from '../../models/Period';
 import Select from 'antd/lib/select';
 import { ChartItem } from '../../models/ChartItem';
-
+import './index.css';
 
 export interface Props {
     actions?: Omit<typeof ChartActions, 'Type'>;
@@ -41,23 +41,25 @@ export class Chart extends React.Component<Props> {
     }
 
     render() {
-        return <div>
-            <Radio.Group defaultValue={this.defaultPeriod} buttonStyle='solid' onChange={(event) => {
-                this.props.actions!.fetchSymbol({
-                    id: this.symbol,
-                    period: event.target.value,
-                })
-            }}>
-                <Radio.Button value='month'>Month</Radio.Button>
-                <Radio.Button value='3months'>Quarter</Radio.Button>
-                <Radio.Button value='year'>Year</Radio.Button>
-                <Radio.Button value='max'>Max</Radio.Button>
-            </Radio.Group>
+        return <div className='content'>
+            <div className='header'>
+                <Radio.Group defaultValue={this.defaultPeriod} buttonStyle='solid' onChange={(event) => {
+                    this.props.actions!.fetchSymbol({
+                        id: this.symbol,
+                        period: event.target.value,
+                    })
+                }}>
+                    <Radio.Button value='month'>Month</Radio.Button>
+                    <Radio.Button value='3months'>Quarter</Radio.Button>
+                    <Radio.Button value='year'>Year</Radio.Button>
+                    <Radio.Button value='max'>Max</Radio.Button>
+                </Radio.Group>
+            </div>
             <div>
                 <ChartView data={this.props.data!}/>
             </div>
-            <div>
-                <Select defaultValue='high' style={{ width: 180 }} onChange={(value) => {
+            <div className='footer'>
+                <Select defaultValue='high' style={{width: 180}} onChange={(value) => {
                     this.props.actions!.setChartType(value as keyof ChartItem);
                 }}>
                     <Select.Option value='high'>Price</Select.Option>
