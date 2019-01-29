@@ -3,7 +3,7 @@ import { setChartType, setSymbolData, setSymbolError } from '../actions/chart';
 import mock1Month from '../mocks/chart-1month.json';
 import { ApiGetSymbolResponse } from '../models/ApiGetSymbolResponse';
 
-describe('Chart reducer', () => {
+describe('ChartView reducer', () => {
     it('setSymbolData should apply passed data', () => {
         const state = chartReducer(Object.assign(
             {}, initialState), setSymbolData(mock1Month as ApiGetSymbolResponse));

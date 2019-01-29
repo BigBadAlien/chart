@@ -13,7 +13,7 @@ import fetchMock from 'fetch-mock';
 const middlewares = [thunk];
 const mockStore = configureMockStore<RootState, ThunkAction<void, RootState, void, AnyAction>>(middlewares);
 
-describe('Chart actions', () => {
+describe('ChartView actions', () => {
     beforeEach(() => {
         fetchMock.reset();
     });

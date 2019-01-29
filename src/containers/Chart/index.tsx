@@ -2,7 +2,7 @@ import * as React from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { RootState } from '../../reducers';
-import { Foobar } from '../../components/Foobar';
+import { ChartView } from '../../components/ChartView';
 import * as ChartActions from '../../actions/chart';
 import { omit } from '../../utils/omit';
 
@@ -22,6 +22,6 @@ export interface Props {
 )
 export class Chart extends React.Component<Props> {
     render() {
-        return <Foobar/>;
+        return <ChartView/>;
     }
 }
