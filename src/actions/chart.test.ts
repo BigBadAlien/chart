@@ -3,7 +3,7 @@ import thunk, { ThunkAction } from 'redux-thunk';
 import { RootState } from '../reducers';
 import { AnyAction } from 'redux';
 import { fetchSymbol } from './chart';
-import * as mock1Month from '../mocks/chart-1month.json';
+import mock1Month from '../mocks/chart-1month.json';
 import mock3Months from '../mocks/chart-3months.json';
 import mock1Year from '../mocks/chart-1year.json';
 import mockMax from '../mocks/chart-max.json';
