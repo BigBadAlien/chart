@@ -1,5 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Main folders
+
+* [src/actions](src/actions)
+* [src/components](src/components)
+* [src/containers](src/containers)
+* [src/reducers](src/reducers)
+
 ## Available Scripts
 
 In the project directory, you can run:
